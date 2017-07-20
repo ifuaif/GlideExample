@@ -18,11 +18,11 @@
 //		public AdapterSpace.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 //
 //			Context context = parent.getContext();
-//			LayoutInflater inflater = LayoutInflater.from(context);
-//			View photoView = inflater.inflate(R.layout.item_photo, parent, false);
-//			AdapterSpace.MyViewHolder viewHolder = new AdapterSpace().MyViewHolder(photoView);
-//			return viewHolder;
-//		}
+////			LayoutInflater inflater = LayoutInflater.from(context);
+////			View photoView = inflater.inflate(R.layout.item_photo, parent, false);
+////			AdapterSpace.MyViewHolder viewHolder = new AdapterSpace().MyViewHolder(photoView);
+////			return viewHolder;
+////		}
 //
 //		@Override
 //		public void onBindViewHolder(AdapterSpace.MyViewHolder holder, int position) {
@@ -68,5 +68,4 @@
 //			mSpacePhotos = spacePhotos;
 //		}
 //	}
-//}
-//}
+//
