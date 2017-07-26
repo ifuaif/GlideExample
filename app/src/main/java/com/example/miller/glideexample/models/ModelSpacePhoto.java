@@ -1,10 +1,17 @@
-package com.example.miller.glideexample;
+package com.example.miller.glideexample.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +39,29 @@ public class ModelSpacePhoto implements Parcelable {
 		}
 	};
 
+	public static ModelSpacePhoto objectFromData(String str) {
+
+		return new Gson().fromJson(str, ModelSpacePhoto.class);
+	}
+
+	public static List<ModelSpacePhoto> arrayModelSpacePhotoFromData(String str, String key) {
+
+		try {
+			JSONObject jsonObject = new JSONObject(str);
+			Type listType = new TypeToken<ArrayList<ModelSpacePhoto>>() {
+			}.getType();
+
+			return new Gson().fromJson(jsonObject.getString(str), listType);
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return new ArrayList();
+
+
+	}
+
 	public List<Photos> getPhotos() {
 		return mPhotos;
 	}
@@ -51,12 +81,12 @@ public class ModelSpacePhoto implements Parcelable {
 
 	public static class Photos {
 		/**
-		 * id : 102685
-		 * sol : 1004
+		 * id : 605247
+		 * sol : 1568
 		 * camera : {"id":20,"name":"FHAZ","rover_id":5,"full_name":"Front Hazard Avoidance Camera"}
-		 * img_src : http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01004/opgs/edr/fcam/FLB_486615455EDR_F0481570FHAZ00323M_.JPG
-		 * earth_date : 2015-06-03
-		 * rover : {"id":5,"name":"Curiosity","landing_date":"2012-08-06","launch_date":"2011-11-26","status":"active","max_sol":1758,"max_date":"2017-07-17","total_photos":318435,"cameras":[{"name":"FHAZ","full_name":"Front Hazard Avoidance Camera"},{"name":"NAVCAM","full_name":"Navigation Camera"},{"name":"MAST","full_name":"Mast Camera"},{"name":"CHEMCAM","full_name":"Chemistry and Camera Complex"},{"name":"MAHLI","full_name":"Mars Hand Lens Imager"},{"name":"MARDI","full_name":"Mars Descent Imager"},{"name":"RHAZ","full_name":"Rear Hazard Avoidance Camera"}]}
+		 * img_src : http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01568/opgs/edr/fcam/FLB_536687943EDR_F0593016FHAZ00337M_.JPG
+		 * earth_date : 2017-01-03
+		 * rover : {"id":5,"name":"Curiosity","landing_date":"2012-08-06","launch_date":"2011-11-26","status":"active","max_sol":1759,"max_date":"2017-07-18","total_photos":318439,"cameras":[{"name":"FHAZ","full_name":"Front Hazard Avoidance Camera"},{"name":"NAVCAM","full_name":"Navigation Camera"},{"name":"MAST","full_name":"Mast Camera"},{"name":"CHEMCAM","full_name":"Chemistry and Camera Complex"},{"name":"MAHLI","full_name":"Mars Hand Lens Imager"},{"name":"MARDI","full_name":"Mars Descent Imager"},{"name":"RHAZ","full_name":"Rear Hazard Avoidance Camera"}]}
 		 */
 
 		@SerializedName("id")
@@ -71,6 +101,37 @@ public class ModelSpacePhoto implements Parcelable {
 		private String mEarthDate;
 		@SerializedName("rover")
 		private Rover mRover;
+
+		public static Photos objectFromData(String str) {
+
+			return new Gson().fromJson(str, Photos.class);
+		}
+
+		public static List<Photos> arrayPhotosFromData(String str) {
+
+			Type listType = new TypeToken<ArrayList<Photos>>() {
+			}.getType();
+
+			return new Gson().fromJson(str, listType);
+		}
+
+		public static List<Photos> arrayPhotosFromData(String str, String key) {
+
+			try {
+				JSONObject jsonObject = new JSONObject(str);
+				Type listType = new TypeToken<ArrayList<Photos>>() {
+				}.getType();
+
+				return new Gson().fromJson(jsonObject.getString(str), listType);
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+
+			return new ArrayList();
+
+
+		}
 
 		public int getId() {
 			return mId;
@@ -120,6 +181,18 @@ public class ModelSpacePhoto implements Parcelable {
 			mRover = rover;
 		}
 
+		@Override
+		public String toString() {
+			return "Photos{" +
+					"mId=" + mId +
+					", mSol=" + mSol +
+					", mCamera=" + mCamera +
+					", mImgSrc='" + mImgSrc + '\'' +
+					", mEarthDate='" + mEarthDate + '\'' +
+					", mRover=" + mRover +
+					'}';
+		}
+
 		public static class Camera {
 			/**
 			 * id : 20
@@ -136,6 +209,37 @@ public class ModelSpacePhoto implements Parcelable {
 			private int mRoverId;
 			@SerializedName("full_name")
 			private String mFullName;
+
+			public static Camera objectFromData(String str) {
+
+				return new Gson().fromJson(str, Camera.class);
+			}
+
+			public static List<Camera> arrayCameraFromData(String str) {
+
+				Type listType = new TypeToken<ArrayList<Camera>>() {
+				}.getType();
+
+				return new Gson().fromJson(str, listType);
+			}
+
+			public static List<Camera> arrayCameraFromData(String str, String key) {
+
+				try {
+					JSONObject jsonObject = new JSONObject(str);
+					Type listType = new TypeToken<ArrayList<Camera>>() {
+					}.getType();
+
+					return new Gson().fromJson(jsonObject.getString(str), listType);
+
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+
+				return new ArrayList();
+
+
+			}
 
 			public int getId() {
 				return mId;
@@ -168,6 +272,16 @@ public class ModelSpacePhoto implements Parcelable {
 			public void setFullName(String fullName) {
 				mFullName = fullName;
 			}
+
+			@Override
+			public String toString() {
+				return "Camera{" +
+						"mId=" + mId +
+						", mName='" + mName + '\'' +
+						", mRoverId=" + mRoverId +
+						", mFullName='" + mFullName + '\'' +
+						'}';
+			}
 		}
 
 		public static class Rover {
@@ -177,9 +291,9 @@ public class ModelSpacePhoto implements Parcelable {
 			 * landing_date : 2012-08-06
 			 * launch_date : 2011-11-26
 			 * status : active
-			 * max_sol : 1758
-			 * max_date : 2017-07-17
-			 * total_photos : 318435
+			 * max_sol : 1759
+			 * max_date : 2017-07-18
+			 * total_photos : 318439
 			 * cameras : [{"name":"FHAZ","full_name":"Front Hazard Avoidance Camera"},{"name":"NAVCAM","full_name":"Navigation Camera"},{"name":"MAST","full_name":"Mast Camera"},{"name":"CHEMCAM","full_name":"Chemistry and Camera Complex"},{"name":"MAHLI","full_name":"Mars Hand Lens Imager"},{"name":"MARDI","full_name":"Mars Descent Imager"},{"name":"RHAZ","full_name":"Rear Hazard Avoidance Camera"}]
 			 */
 
@@ -201,6 +315,37 @@ public class ModelSpacePhoto implements Parcelable {
 			private int mTotalPhotos;
 			@SerializedName("cameras")
 			private List<Camera> mCameras;
+
+			public static Rover objectFromData(String str) {
+
+				return new Gson().fromJson(str, Rover.class);
+			}
+
+			public static List<Rover> arrayRoverFromData(String str) {
+
+				Type listType = new TypeToken<ArrayList<Rover>>() {
+				}.getType();
+
+				return new Gson().fromJson(str, listType);
+			}
+
+			public static List<Rover> arrayRoverFromData(String str, String key) {
+
+				try {
+					JSONObject jsonObject = new JSONObject(str);
+					Type listType = new TypeToken<ArrayList<Rover>>() {
+					}.getType();
+
+					return new Gson().fromJson(jsonObject.getString(str), listType);
+
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+
+				return new ArrayList();
+
+
+			}
 
 			public int getId() {
 				return mId;
@@ -272,6 +417,21 @@ public class ModelSpacePhoto implements Parcelable {
 
 			public void setCameras(List<Camera> cameras) {
 				mCameras = cameras;
+			}
+
+			@Override
+			public String toString() {
+				return "Rover{" +
+						"mId=" + mId +
+						", mName='" + mName + '\'' +
+						", mLandingDate='" + mLandingDate + '\'' +
+						", mLaunchDate='" + mLaunchDate + '\'' +
+						", mStatus='" + mStatus + '\'' +
+						", mMaxSol=" + mMaxSol +
+						", mMaxDate='" + mMaxDate + '\'' +
+						", mTotalPhotos=" + mTotalPhotos +
+						", mCameras=" + mCameras +
+						'}';
 			}
 		}
 	}

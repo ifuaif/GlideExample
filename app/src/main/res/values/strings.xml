@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GlideExample</string>
+    <string name="date_picker_title">Day On Earth</string>
 </resources>

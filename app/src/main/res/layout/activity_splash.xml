@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_header_nasa"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="8dp"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/nasa_logo"/>
+
+    <TextView
+        android:id="@+id/header_splash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello Body!\n I wont to show you Marse!\n You can choose any day when the photos were taken!   "
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tv_startCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Start"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/animated_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Now!"/>
+
+
+</LinearLayout>
